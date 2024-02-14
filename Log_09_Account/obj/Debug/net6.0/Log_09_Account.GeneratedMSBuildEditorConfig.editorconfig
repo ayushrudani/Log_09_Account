@@ -1,0 +1,79 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Log_09_Account
+build_property.RootNamespace = Log_09_Account
+build_property.ProjectDir = E:\.Net Projects\API_CRUD\Log_09_Account\Log_09_Account\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = E:\.Net Projects\API_CRUD\Log_09_Account\Log_09_Account
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/ACC_Account/ACC_AccountAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXEFDQ19BY2NvdW50XEFDQ19BY2NvdW50QWRkRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/ACC_Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXEFDQ19BY2NvdW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/Shared/_ACC_AccountList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXFNoYXJlZFxfQUNDX0FjY291bnRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/Shared/_ACC_AccountListFilterForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXFNoYXJlZFxfQUNDX0FjY291bnRMaXN0RmlsdGVyRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Areas/ACC/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQUNDXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Shared/_GeneratePager.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9HZW5lcmF0ZVBhZ2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/.Net Projects/API_CRUD/Log_09_Account/Log_09_Account/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-n9uqxusne2

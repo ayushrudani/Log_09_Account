@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<partial name="_ACC_AccountListFilterForm" />
+<div class="container-fluid px-4 pt-4">
+
+<div id="SearchResult" class="div-search-result"></div>
+</div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            console.log("Hello");
+            $("#filterForm").submit();
+        });
+        function initDataTable(tableSelector) {
+            $(tableSelector).DataTable({
+                "scrollY": "300px",
+                "scrollCollapse": true,
+                "paging": false,
+                "order": [],
+                "stateSave": true,
+                "scrollX": true
+            });
+        }
+
+        function OnSuccess(formID) {
+            // if (formID == "filterForm") {
+            //     initDataTable("#tblList");
+            // }
+
+            if (formID == "formAdd_SEC_Controller") {
+            }
+
+
+            if (formID == "formEdit_SEC_Controller") {
+            }
+
+            if (formID == "formAddEditSave_SEC_Controller") {
+                $("#filterForm").submit();
+                toastr.success("Record saved successfully..!");
+            }
+
+            if (formID == "formDelete_SEC_Controller") {
+                $("#filterForm").submit();
+                toastr.success("Record deleted successfully..!");
+            }
+        }
+    </script>
+}

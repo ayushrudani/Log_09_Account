@@ -1,0 +1,333 @@
+﻿@model Log_09_Account.Areas.ACC.Models.ACC_AccountModel;
+@{
+    ViewData["Title"] = "ACC_AccountAddEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid px-4 pt-4">
+    <!-- Form Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-9">
+                <div class="bg-light rounded h-100 p-4">
+                    <form method="post" asp-area="ACC" asp-action="_Save" asp-controller="ACC_Account">
+                        @Html.HiddenFor(x => x.AccountID)
+                        @Html.HiddenFor(x => x.xmlMST_Company)
+                        @Html.AntiForgeryToken()
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    Account Type
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <select class="form-control" data-control="select2" asp-for="AccountTypeID"
+                                                    asp-items="@(new SelectList(ViewBag.AccountTypeList,"AccountTypeID","AccountTypeName"))">
+                                                <option value="">Select AccounType</option>
+                                            </select>
+                                            @Html.ValidationMessageFor(m => m.AccountTypeID, "", new { @class = "form-text text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a style="margin-right: 20px;"><i class="fa fa-plus"></i></a>
+                                    <a><i class="fas fa-sync-alt"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Account Name
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="AccountName" type="text" placeholder="Enter Account Name" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Account Print Name
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="AccountPrintName" type="text" placeholder="Enter Account Print Name" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Description
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="Description" type="text" placeholder="Enter Description" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Account Group
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <select class="form-control" data-control="select2" asp-for="AccountGroupID"
+                                                    asp-items="@(new SelectList(ViewBag.AccountGroupList,"AccountGroupID","AccountGroupName"))">
+                                                <option value="">Select AccountGroup</option>
+                                            </select>
+                                            @Html.ValidationMessageFor(m => m.AccountGroupID, "", new { @class = "form-text text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a style="margin-right: 20px;"><i class="fa fa-plus"></i></a>
+                                    <a><i class="fas fa-sync-alt"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Balance On
+                                </td>
+                                <td>
+                                    <fieldset class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- Column for "CR" radio button -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               asp-for="@Model.BalanceOn"
+                                                               type="radio"
+                                                               name="BalanceOn"
+                                                               id="CR"
+                                                               value="CR">
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            CR
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <!-- Column for "DR" radio button -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               asp-for="@Model.BalanceOn"
+                                                               type="radio"
+                                                               name="BalanceOn"
+                                                               id="DR"
+                                                               value="DR" />
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            DR
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    OB Amt.
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="OBAmount" type="text" placeholder="0.00" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    OB Amt Display.
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="OBAmountDisplay" type="text" placeholder="0.00" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    OB On
+                                </td>
+                                <td>
+                                    <fieldset class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- Column for "CR" radio button -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               asp-for="@Model.OBon"
+                                                               type="radio"
+                                                               name="OBon"
+                                                               id="CR"
+                                                               value="CR" 
+                                                               >
+
+                                                        <label class="form-check-label" for="gridRadios1">
+                                                            CR
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <!-- Column for "DR" radio button -->
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               asp-for="@Model.OBon"
+                                                               type="radio"
+                                                               name="OBon"
+                                                               id="DR"
+                                                               value="DR" />
+                                                        <label class="form-check-label" for="gridRadios2">
+                                                            DR
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </td>
+                                <td></td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-6">
+                                            <!-- Column for "Active" checkbox -->
+                                            <div class="form-check">
+                                                <input type="checkbox" asp-for="IsActive" class="form-check-input" />
+                                                Active
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <!-- Column for "RCM" checkbox -->
+                                            <div class="form-check">
+                                                <input type="checkbox" asp-for="IsRCM" class="form-check-input" />
+                                                RCM
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Is TDS Applicable?
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            @* set dropdown for yes no *@
+                                            @* <input asp-for="IsTDSApplicable" type="text" class="form-control" id=""> *@
+                                            @Html.DropDownListFor(model => model.IsTDSApplicable, new List<SelectListItem>()
+                                            {
+                                            new SelectListItem() { Text = "Yes", Value = "True" },
+                                            new SelectListItem() { Text = "No", Value = "False"}
+                                            }, "Select.....", new {@class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.IsTDSApplicable)
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    PAN
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="PAN" type="text" placeholder="Enter PAN" class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    GST No.
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <input asp-for="GSTNo" type="text" placeholder="Enter GST No." class="form-control" id="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Remarks
+                                </td>
+                                <td>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-10">
+                                            <textarea asp-for="Remarks" class="form-control form-control-solid" rows="2" cols="5"></textarea>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button asp-action="Cancel" asp-area="" asp-controller="" class="btn btn-primary">Cancel</button>
+                                </td>
+                                <td>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-xl-3">
+                <div>
+                    <div class="bg-light rounded h-100 p-4">
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>Company</th>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>DU</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>GN - WebSoft</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form End -->
+</div>

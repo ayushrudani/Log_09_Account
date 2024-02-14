@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Log_09_Account</title>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/Layout/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/Layout/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Layout/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/Layout/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+
+         <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <div class="navbar-nav w-100">
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    @* <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="button.html" class="dropdown-item">Buttons</a>
+                            <a href="typography.html" class="dropdown-item">Typography</a>
+                            <a href="element.html" class="dropdown-item">Other Elements</a>
+                        </div>
+                    </div> *@
+                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>                   
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+        <!-- Content Start -->
+        <div class="content mt-3">
+            @RenderBody()
+        </div>
+
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Layout/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Layout/lib/chart/chart.min.js"></script>
+    <script src="~/Layout/lib/easing/easing.min.js"></script>
+    <script src="~/Layout/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/Layout/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/Layout/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/Layout/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/Layout/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+
+    @* sir js *@
+    <!--begin::Javascript-->
+    <script>var hostUrl = "~/assets/";</script>
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--begin::Vendors Javascript(used by this page)-->
+    <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+    <script src="~/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="~/assets/js/custom/apps/ecommerce/reports/customer-orders/customer-orders.js"></script>
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used by this page)-->
+    <script src="~/assets/js/widgets.bundle.js"></script>
+    <script src="~/assets/js/custom/widgets.js"></script>
+    <script src="~/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="~/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="~/assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="~/assets/js/custom/utilities/modals/new-target.js"></script>
+    <script src="~/assets/js/custom/utilities/modals/users-search.js"></script>
+
+    <!--end::Custom Javascript-->
+    <!-- Plugins JS -->
+    <script src="~/plugins/jquery-3.7.0/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/plugins/moment-2.29.4/moment.min.js"></script>
+    <script src="~/plugins/jquery.unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/plugins/jquery-validate-1.19.5/jquery.validate.min.js"></script>
+    <script src="~/plugins/jquery.validate.unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/plugins/bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="~/plugins/jquery-blockUI-2.70.0/jquery.blockUI.js"></script>
+    @*<script src="~/plugins/bootbox-4.3.0/js/bootbox.min.js"></script>*@
+    <script src="~/plugins/bootbox-6.0.0/js/bootbox.min.js"></script>
+    <script src="~/plugins/tostr-2.1.1/js/toastr.min.js"></script>
+    <script src="~/plugins/select2/js/select2.min.js"></script>
+
+    <script src="~/plugins/DataTables/DataTables-1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/DataTables/DataTables-1.13.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/plugins/DataTables/JSZip-3.10.1/jszip.min.js"></script>
+    <script src="~/plugins/DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
+    <script src="~/plugins/DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
+    <script src="~/plugins/DataTables/Buttons-2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/DataTables/Buttons-2.4.1/js/buttons.bootstrap5.min.js"></script>
+    <script src="~/plugins/DataTables/Buttons-2.4.1/js/buttons.colVis.min.js"></script>
+    <script src="~/plugins/DataTables/Buttons-2.4.1/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/DataTables/Buttons-2.4.1/js/buttons.print.min.js"></script>
+    @*<script src="~/plugins/DataTables/FixedHeader-3.4.0/js/dataTables.fixedHeader.min.js"></script>*@
+
+    <!-- Custom JS -->
+    <script src="~/js/CommonJsFunctions.js"></script>
+    <script src="~/js/CommonValidation.js"></script>
+    <script src="~/js/FillCombobox.js"></script>
+    <script src="~/js/UI_AjaxModal.js"></script>
+    <script src="~/js/UI_TableCheckboxSelectAll.js"></script>
+
+    <script src="~/js/UI_Bootbox.js"></script>
+    <script src="~/js/UI_Select2.js"></script>
+    <script src="~/js/UI_DateTime_Picker.js"></script>
+    <script src="~/js/UI_BlockUI.js"></script>
+
+    <script src="~/js/InitMain.js"></script>
+    <script>
+        function OnFailure(xhr, status, error) {
+            //console.log(xhr);
+            bootbox.alert(xhr.responseText);
+        }
+        function checkIfModalOpen() {
+            var modelplaceholderLength = $('#modal-placeholder').html().length;
+            if (modelplaceholderLength > 0) {
+                $("body").addClass("modal-open");
+            } else {
+                $("body").removeClass("modal-open");
+            }
+        }
+    </script>
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

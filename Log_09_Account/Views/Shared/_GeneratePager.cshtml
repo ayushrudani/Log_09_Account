@@ -1,0 +1,68 @@
+﻿@using Log_09_Account.CF;
+@model PagedListPagerModel
+
+@{
+    int? vTotalRecords = Model.TotalItems;
+
+    int? vLastPageRecords = vTotalRecords % Model.PageSize;
+    int? vTotalPage = vTotalRecords / Model.PageSize + (vLastPageRecords != 0 ? 1 : 0);
+
+    int? vCurrentPage = Model.CurrentPageNo;
+
+    int? vCurrentPageRecordStart = (Model.CurrentPageNo - 1) * Model.PageSize + 1;
+    int? vCurrentPageRecordEnd = (Model.CurrentPageNo - 1) * Model.PageSize + (vCurrentPage == vTotalPage ? vLastPageRecords : Model.PageSize);
+}
+<div>
+    <div>
+        @if (Model.EndPageNo > 1)
+        {
+            <div class="btn-group btn-group-sm g-ml-10">
+                @if (Model.CurrentPageNo > 1)
+                {
+                    <button type="button" class="pager-item btn btn-outline-primary g-brd-1 g-brd-gray-light-v3 g-px-10 g-pr-2 g-py-4" onclick="fnPagedList_OnGoToPageNo(1);" data-pageno="1">
+                        Start <i class="la la-angle-double-left"></i>
+                    </button>
+
+                    <button type="button" class="pager-item btn btn-outline-primary g-brd-gray-light-v3 g-px-10 g-pr-2 g-py-4" onclick="fnPagedList_OnGoToPageNo(@(Model.CurrentPageNo - 1));" data-pageno="@(Model.CurrentPageNo - 1)">
+                        Previous <i class="la la-angle-left"></i>
+                    </button>
+                }
+
+                @for (var page = Model.StartPageNo; page <= Model.EndPageNo; page++)
+                {
+                    <button type="button" class="pager-item btn g-py-4 @(page == Model.CurrentPageNo ? "btn-primary" : "btn-outline-primary g-brd-gray-light-v3")"
+                            data-pageno="@(page)" onclick="fnPagedList_OnGoToPageNo(@(page));">
+                        @(page)
+                    </button>
+                }
+
+                @if (Model.CurrentPageNo < Model.TotalPages)
+                {
+                    <button type="button" class="pager-item btn btn-outline-primary g-brd-gray-light-v3 g-px-10 g-pr-2 g-py-4" data-pageno="@(Model.CurrentPageNo + 1)"
+                            onclick="fnPagedList_OnGoToPageNo(@(Model.CurrentPageNo + 1));">
+                        Next <i class="la la-angle-right"></i>
+                    </button>
+
+                    <button type="button" class="pager-item btn btn-outline-primary g-brd-gray-light-v3 g-px-10 g-pr-2 g-py-4" data-pageno="@(Model.TotalPages)"
+                            onclick="fnPagedList_OnGoToPageNo(@(Model.TotalPages));">
+                        End <i class="la la-angle-double-right"></i>
+                    </button>
+                }
+            </div>
+        }
+    </div>
+    <div class="float-end mt-md-3">
+        <div class="input-group input-group-sm pull-right g-ml-10" style="max-width:150px;">
+            <input id="JumpToPageNo" type="text" class="form-control" placeholder="Page" style="height: 31px; border-radius: 0.25rem 0 0 0.25rem !important;">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" style="padding: 0.3rem 0.8rem; border-radius: 0 0.25rem 0.25rem 0 !important;" type="submit" onclick="fnPagedList_OnGoToPageNo(document.getElementById('JumpToPageNo').value);">Go</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function fnPagedList_OnGoToPageNo(vPageNo) {
+        $("#GoToPageNo").val(vPageNo).trigger('change');
+    }
+</script>

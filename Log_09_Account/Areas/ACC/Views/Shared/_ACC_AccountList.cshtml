@@ -1,0 +1,108 @@
+﻿@using Log_09_Account.CF;
+@using Log_09_Account.BAL;
+@using Log_09_Account.DAL;
+@using Log_09_Account.Areas.ACC.Models;
+@using static Log_09_Account.DAL.ACC_AccountDALBase;
+@model Tuple<ACC_AccountModel, PagedListPagerModel, List<dbo_PR_ACC_Account_SelectAll_Result>>
+
+@{
+    UserOperationRightsModel vUserOperationRightsModel = ViewBag.UserOperationRights;
+}
+<div class="card-body pt-0">
+    <div class="row">
+        <div class="col-md-12">
+            @* <partial name="/Views/Error/_ucShowInfo.cshtml" /> *@
+        </div>
+    </div>
+    <div>
+        <a asp-area="ACC" asp-action="AddEdit" asp-controller="ACC_Account" class="btn btn-sm btn-success">
+            <i class="fa fa-plus"></i> Add Account
+        </a>
+    </div>
+    <div class="col-md-12" id="divCityList">
+
+
+        <form id="hdFormUpdateCityList" class="" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
+              data-ajax-success="OnSuccess(this.id,data, status, xhr);" data-ajax-failure="OnFailure(xhr, status, error);"
+              asp-action="_SearchResult" asp-controller="ACC_Account" asp-area="ACC">
+            @Html.AntiForgeryToken()
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-7">
+                    @* Page size: @Html.DropDownList("F_PageSize", Model.Item2.PageSizeList, new { @class = "form-select js-grid-hd-input", style = "display: inline; width: 65px; height: 30px; padding: 0px 4px; padding-top: 2px; padding-bottom: 6px;" }) *@
+                    <div class="d-inline-bMEMk">@Html.Raw(Model.Item2.PageInfo)</div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="hidden" id="GoToPageNo" class="js-grid-hd-input" name="F_PageNo" value="@(Model.Item1.F_PageNo)" />
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="tblList">
+                <thead class="table-secondary">
+                    <tr class="fw-bold">
+                        <th width="10%">A/C Type</th>
+                        <th width="8%"> Account Name</th>
+                        <th width="10%">A/C print Name</th>
+                        <th width="8%">A/C Group</th>
+                        <th>OB On</th>
+                        <th>Amount</th>
+                        <th width="5%">Active</th>
+                        <th width="8%">RMC</th>
+                        <th width="8%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                    }
+                    @if (Model.Item3.Count == 0)
+                    {
+                        <tr class="text-center">
+                            <td colspan="8">No records found...!</td>
+                        </tr>
+                    }
+                    @foreach (var item in Model.Item3)
+                    {
+                        i++;
+                        <tr>
+                            <td>@item.AccountTypeName</td>
+                            <td>@item.AccountName</td>
+                            <td>@item.AccountPrintName</td>
+                            <td>@item.AccountGroupName</td>
+                            <td>@item.OBon</td>
+                            <td>@item.OBAmount</td>
+                            <td>@item.IsActive</td>
+                            <td>@item.IsRCM</td>
+                            
+                            <td class="text-center">
+                                @if (vUserOperationRightsModel.IsEdit)
+                                {
+                                    <span data-bs-toggle="tooltip" data-bs-placement="left" title="Edit">
+                                        <a asp-area="ACC" asp-action="AddEdit" asp-controller="ACC_Account" asp-route-AccountID="@item.AccountID" class="btn btn-primary btn-icon btn-elevate btn-sm">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </span>
+                                }
+
+                                @if (vUserOperationRightsModel.IsDelete)
+                                {
+                                    <form method="post" asp-area="ACC" asp-action="_Delete" asp-controller="ACC_Account" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="AccountID" value="@item.AccountID" />
+                                        <a class="btn btn-danger btn-icon btn-elevate btn-sm js-bb-confirm-delete" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"><i class="fa fa-trash"></i></a>
+                                    </form>
+                                }
+                            </td> 
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="text-end pull-end">
+            @* <partial name="/Views/Shared/_GeneratePager.cshtml" model="@Model.Item2" /> *@
+        </div>
+    </div>
+</div>

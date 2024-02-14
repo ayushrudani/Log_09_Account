@@ -1,0 +1,214 @@
+﻿@using Log_09_Account.CF;
+@using Log_09_Account.BAL;
+@model Log_09_Account.Areas.ACC.Models.ACC_AccountModel;
+
+<div class="container-fluid px-4 pt-4">
+    <div class="row">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Filtters</h6>
+                <form id="filterForm" class="filter-form" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace"
+                      data-ajax-update="#SearchResult" data-ajax-success="OnSuccess(this.id,data, status, xhr);"
+                      data-ajax-failure="OnFailure(xhr, status, error);" asp-action="_SearchResult" asp-controller="ACC_Account"
+                      asp-area="ACC">
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <div class="input-group mb-3">
+                                    @* drop down *@
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <select class="form-control" data-control="select2" asp-for="F_AccountTypeID"
+                                            asp-items="@(new SelectList(ViewBag.AccountTypeList,"AccountTypeID","AccountTypeName"))">
+                                        <option value="">Select AccounType</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.F_AccountTypeID, "", new { @class = "form-text text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <div class="input-group mb-3">
+                                    @* textbox *@
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Enter Account Name"
+                                           asp-for="F_AccountName" />
+                                    @Html.ValidationMessageFor(m => m.F_AccountName, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <div class="input-group mb-3">
+                                    @* textbox *@
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Enter Account Print Name"
+                                           asp-for="F_AccountPrintName" />
+                                    @Html.ValidationMessageFor(m => m.F_AccountPrintName, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="mb-3">
+                                <div class="input-group mb-3">
+                                    @* drop down *@
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <select class="form-control" data-control="select2" asp-for="F_AccountGroupID"
+                                            asp-items="@(new SelectList(ViewBag.AccountGroupList,"AccountGroupID","AccountGroupName"))">
+                                        <option value="">Select AccountGroup</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.F_AccountGroupID, "", new { @class = "form-text text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex">
+                            <div id="AllOB" class="">
+                                <input class="form-check-input"
+                                       asp-for="F_IsZero"
+                                       type="radio"
+                                       name="F_IsZero"
+                                       id="AllOB"
+                                       value=""
+                                       checked
+                                      />
+                                <label class="form-check-label mr-3" for="AllOB">
+                                    All
+                                </label>
+                            </div>
+                            <div id="NonZeroOB" class="">
+                                <input class="form-check-input"
+                                       asp-for="F_IsZero"
+                                       type="radio"
+                                       name="F_IsZero"
+                                       id="NonZeroOB"
+                                       value="false"
+                                      />
+                                <label class="form-check-label" for="NonZeroOB">
+                                    Non Zero OB
+                                </label>
+                            </div>
+                            <div id="ZeroOB" class="">
+                                <input class="form-check-input"
+                                       asp-for="F_IsZero"
+                                       type="radio"
+                                       name="F_IsZero"
+                                       id="ZeroOB"
+                                       value="true"
+                                      />
+                                <label class="form-check-label" for="ZeroOB">
+                                    Zero OB
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex">
+                            <div id="AllCR" name="CRGroup" class="">
+                                <input class="form-check-input"
+                                       asp-for="@Model.F_IsCR"
+                                       type="radio"
+                                       name="F_IsCR"
+                                       id="AllCR"
+                                       value=""
+                                       checked
+                                      />
+                                <label class="form-check-label mr-3" for="AllCR">
+                                    All
+                                </label>
+                            </div>
+                            <div id="CR" name="CRGroup" class="">
+                                <input class="form-check-input"
+                                       asp-for="@Model.F_IsCR"
+                                       type="radio"
+                                       name="F_IsCR"
+                                       id="CR"
+                                       value="true"
+                                      />
+                                <label class="form-check-label" for="CR">
+                                    CR
+                                </label>
+                            </div>
+                            <div id="DR" name="CRGroup" class="">
+                                <input class="form-check-input"
+                                       asp-for="@Model.F_IsCR"
+                                       type="radio"
+                                       name="F_IsCR"
+                                       id="DR"
+                                       value="false"
+                                      />
+                                <label class="form-check-label" for="DR">
+                                    DR
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 d-flex">
+                            <div id="AllRCM" class="">
+                                <input class="form-check-input"
+                                        asp-for="@Model.F_IsRCM"
+                                       type="radio"
+                                       name="F_IsRCM"
+                                       id="AllRCM"
+                                       value=""
+                                       checked />
+                                <label class="form-check-label mr-3" for="AllRCM">
+                                    All
+                                </label>
+                            </div>
+                            <div id="NotRCM" class="">
+                                <input class="form-check-input"
+                                       asp-for="@Model.F_IsRCM"
+                                       type="radio"
+                                       name="F_IsRCM"
+                                       id="NotRCM"
+                                       value="false"
+                                      />
+                                <label class="form-check-label" for="NotRCM">
+                                    Not RCM
+                                </label>
+                            </div>
+                            <div id="RCM" class="">
+                                <input class="form-check-input"
+                                       asp-for="@Model.F_IsRCM"
+                                       type="radio"
+                                       name="F_IsRCM"
+                                       id="RCM"
+                                       value="true"
+                                      />
+                                <label class="form-check-label" for="RCM">
+                                    RCM
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                Search
+                            </button>
+
+                            <button type="submit" class="btn btn-danger">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
